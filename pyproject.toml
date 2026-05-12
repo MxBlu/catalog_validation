@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "catalog_validation"
+version = "0.2"
+description = "Validate TrueNAS Catalog(s)"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "GNU3" }
+dependencies = [
+  "gitpython",
+  "jsonschema==4.10.3",
+  "kubernetes",
+  "markdown",
+  "pyyaml",
+  "semantic_version",
+]
+
+[project.scripts]
+catalog_validate = "catalog_validation.scripts.catalog_validate:main"
+catalog_update = "catalog_validation.scripts.catalog_update:main"
+dev_charts_validate = "catalog_validation.scripts.dev_apps_validate:main"
+
+[tool.setuptools.packages.find]
+include = ["catalog_validation*"]
+
+[dependency-groups]
+dev = [
+  "flake8",
+  "pytest",
+  "pytest-mock",
+]

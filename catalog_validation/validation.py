@@ -5,7 +5,10 @@ import os
 import yaml
 
 from jsonschema import validate as json_schema_validate, ValidationError as JsonValidationError
-from middlewared.validators import validate_filters
+try:
+    from middlewared.validators import validate_filters
+except ModuleNotFoundError:
+    from .compat import validate_filters
 from semantic_version import Version
 from typing import Optional
 

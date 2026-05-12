@@ -1,7 +1,10 @@
 import os
 import yaml
 
-from middlewared.plugins.update_.utils import can_update
+try:
+    from middlewared.plugins.update_.utils import can_update
+except ModuleNotFoundError:
+    from .compat import can_update
 from semantic_version import Version
 from typing import Optional
 
